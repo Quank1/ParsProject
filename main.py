@@ -11,16 +11,25 @@ price_list = []
 count = 0
 
 
-for num in range(1, 5):
+for num in range(1, 2):
 
 
-    url = f"https://www.olx.ua/uk/nedvizhimost/kvartiry/?page={num}"
+    url = "https://www.olx.ua/uk/nedvizhimost/kvartiry/"
 
     response = requests.get(url, headers=headers)
 
     soup = BeautifulSoup(response.text, "lxml")
 
     data = soup.find_all("div", class_="css-1sw7q4x")
+
+    data_next_page = soup.find_all("ul", class_ = "pagination-list  css-1vdlgt7")
+    
+    next_page_url = ""
+
+    for i in data_next_page:
+        next_page_url = "https://www.olx.ua" + data_next_page.find("a").get("href")
+    
+    print(next_page_url)
 
     for i in data:
         sleep(1)
@@ -35,6 +44,7 @@ for num in range(1, 5):
         except AttributeError:
             print("Нету цены!")
 
+    url = next_page_url
 
 summa = sum(price_list) / count
 
