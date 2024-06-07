@@ -11,7 +11,7 @@ price_list = []
 count = 0
 
 
-for num in range(1, 2):
+for num in range(1, 4):
 
 
     url = "https://www.olx.ua/uk/nedvizhimost/kvartiry/"
