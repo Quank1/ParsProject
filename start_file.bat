@@ -2,11 +2,11 @@
 
 python -m venv venv
 
-cd venv/Scripts
+call venv/Scripts/activate
 
-start activate.bat
-
-pip install request, beAautifulsoup4, lxml
+pip install requests
+pip install beautifulsoup4
+pip install lxml
 
 python main.py
 
